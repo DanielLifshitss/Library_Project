@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %}{% block content %}{% load crispy_forms_tags %}
+{% csrf_token %}
+	<div class="container-fluid py-5">
+        <div class="container2">
+            <h2>Loan a book from Library</h2>
+            {% if messages %}
+				      {%for message in messages %}
+					      <h3>{{message}}</h3>
+				      {%endfor%}
+			      {% endif %}
+            <form method="POST">
+              {% csrf_token %}
+              <label for="title">Book Name:</label>
+              <input type="text" id="title" name="title" required>
+
+              <input type="submit" value="Loan Book">
+            </form>
+            <br>
+            <h2>Return a Book to Library</h2>
+            <form method="POST">
+              {% csrf_token %}
+              <label for="title2">Book Name:</label>
+              <input type="text" id="title2" name="title2" required>
+          
+              <input type="submit" value="Return Book">
+            </form>
+	</div> 
+{% endblock %}

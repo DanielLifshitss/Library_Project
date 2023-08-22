@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %}{% block content %}{% load crispy_forms_tags %}
+        <div class="container-fluid py-5">
+            <h1 class="text-center"> BOOKS LIST </h1><br>
+            <button id="openPopupBtn">חפש</button>
+            <br>
+            <div id="popupContainer" class="popup-container">
+                <div class="popup-content">
+                    <h2>Cloud Search</h2>
+                    <form action="#" method="GET" class="search-form">
+                        <input type="text" name="bookname" id="searchInput" placeholder="שם הספר"><br>
+                        <input type="text" name="authorname" id="searchInput" placeholder="סופר">
+                        <button type="submit">Search</button>
+                    </form>
+                    <br>
+                    <button id="closePopupBtn">Close</button>
+                </div>
+        </div>
+        {%for book in books%}
+                <div class="book-card">
+                    <img src="{% static '/images/'|add:book.id|add:'.jpg' %}" alt="Book 1">
+                    <div class="book-info">
+                        <h3 class="book-title">{{book.name}}</h3>
+                        <p class="author">Author{{book.author}}</p>
+                    </div>
+                </div>
+                <br>
+        {%endfor%}
+
+	</div> 
+    {% endblock %}

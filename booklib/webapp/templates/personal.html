@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %}{% block content %}{% load crispy_forms_tags %}
+{% csrf_token %}
+    <h1 class="text-center">Your Loaned books</h1><br>
+    <h2 class="text-center">{{user.get_username}}</h2>
+		{%for loan in loans%}
+            <div class="book-card">
+                <div class="book-info">
+                    <h3 class="book-title">{{ loan.book__name }}</h3>
+                    <p class="author">{{ loan.customer__name}}</p>
+                    <p class="author">Loan Date-{{ loan.loandate }}</p>
+                    <p class="author">Return Date-{{ loan.returndate }}</p>
+                </div>
+            </div>
+            <br>
+        {%endfor%}
+	</div> 
+{% endblock %}
